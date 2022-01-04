@@ -1,0 +1,123 @@
+button {
+  border: none;
+  background-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.main h1 {
+  margin-bottom: 10px;
+  padding: 0;
+  text-align: center;
+  font-family: "Verdana", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #003489;
+}
+
+.main form,
+.main .menu {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 3px 3px 2px #ccc;
+  font-family: "Verdana", sans-serif;
+}
+
+.main form label {
+  display: block;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.main form label span {
+  display: inline-block;
+  width: 100%;
+}
+
+.main form label input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.main form button {
+  border: none;
+  margin-bottom: 2.5px;
+  padding: 5px;
+  border: 1px solid #003489;
+  border-radius: 5px;
+  color: #003489;
+  transition: all 0.222s linear;
+  cursor: pointer;
+}
+
+.main form button:hover {
+  background-color: #003489;
+  color: #fff;
+}
+
+.main .menu .card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.main .menu .card .card-options {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+.main .menu .card .card-options button,
+.main .option input[type="submit"] {
+  margin: 0;
+  padding: 15px;
+  border: 1px solid #4ea4b1;
+  border-radius: 5px;
+  background-color: #c5e6eb;
+  cursor: pointer;
+}
+
+.main .option input[type="submit"] {
+  padding: 10px;
+}
+
+.main .srv-msg {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 3px 3px 2px #ccc;
+}
+
+.main .srv-msg table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main .srv-msg table th{
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  color: #003489;
+}
+
+.main .srv-msg table tbody tr{
+  border-bottom: 1px solid #ccc;
+}
+
+.main .srv-msg table tbody tr td{
+  padding: 5px;
+  text-align: center;
+}

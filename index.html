@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+	<head lang="pt-br">
+		<meta charset="utf-8" />
+		<title>Carteira Digital - Home</title>
+		<link rel="shortcut icon" href="img/dolar.ico" type="favicon.ico" size="32x32">
+		<link rel="stylesheet" href="css/home.css">
+		<script src="js/home.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+
+	<body>
+		<div class="main">
+			<h1>Carteira Digital</h1>
+			<form>
+				<label>
+					<span>Nome:</span>
+					<input id="nome" type="text" name="nome" placeholder="João da Silva" />
+				</label>
+				
+				<label>
+					<span>CPF:</span>
+					<input id="cpf" type="text" name="cpf" placeholder="12345678910" />
+				</label>
+				
+				<label>
+					<span>Telefone:</span>
+					<input id="telefone" type="text" name="telefone" placeholder="(11)91111-1234" />
+				</label>
+				
+				<button id="cadastrar" value="enviar">Enviar</button>
+				<button id="alterar" value="alterar">Alterar</button>
+				<button id="desativar" value="desativar">Desativar</button>
+			</form>
+			
+			<div class="menu">
+				<div class="title">
+					<h1>Escolha qual operação deseja realizar:</h1>
+				</div>
+				
+				<section class="card">
+					<div class="card-options">
+						<button id="transf" name="transf">Transferir Saldo</button>
+					</div>
+					
+					<div class="card-options">
+						<button id="adicionar" name="adicionar">Adicionar Saldo</button>
+					</div>
+					
+					<div class="card-options">
+						<button id="compras" name="compras">Fazer Compras</button>
+					</div>
+
+					<div class="card-options">
+						<button id="historico" name="historico">Ver Histórico</button>
+					</div>
+				</section>
+			</div>
+
+			<div class="option">
+			</div>
+		</div>
+	</body>
+</html>
