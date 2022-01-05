@@ -1,6 +1,9 @@
 const urlBase = "http://localhost:3000/";
 
 window.addEventListener("load", function () {
+  cardMenu()
+  cardSaldo()
+
   const transfSaldo = document.querySelector("#transf");
   transfSaldo.addEventListener("click", () => cardTransfSaldo());
 
@@ -22,6 +25,80 @@ window.addEventListener("load", function () {
   const desativarUsu = document.querySelector("button#desativar");
   desativarUsu.addEventListener("click", () => desativarUsuarios());
 });
+
+// Cria o card com o menu de opções disponíveis para o cliente realizar as operações
+function cardMenu() {
+  let menu = document.querySelector('.menu')
+  
+  let sectionCard = document.createElement('section')
+  sectionCard.classList.add('card')
+  
+  let divCardOptionTransf = document.createElement('div')
+  divCardOptionTransf.classList.add('card-options')
+  
+  let buttonTransferencia = document.createElement('button')
+  buttonTransferencia.setAttribute('id', 'transf')
+  buttonTransferencia.append(document.createTextNode('Transferir Saldo'))
+  
+  let divCardOptionAdicionar = document.createElement('div')
+  divCardOptionAdicionar.classList.add('card-options')
+  
+  let buttonAdicionar = document.createElement('button')
+  buttonAdicionar.setAttribute('id', 'adicionar')
+  buttonAdicionar.append(document.createTextNode('Adicionar Saldo'))
+  
+  let divCardOptionCompras = document.createElement('div')
+  divCardOptionCompras.classList.add('card-options')
+  
+  let buttonCompras = document.createElement('button')
+  buttonCompras.setAttribute('id', 'compras')
+  buttonCompras.append(document.createTextNode('Fazer Compras'))
+  
+  let divCardOptionHistorico = document.createElement('div')
+  divCardOptionHistorico.classList.add('card-options')
+  
+  let buttonHistorico = document.createElement('button')
+  buttonHistorico.setAttribute('id', 'historico')
+  buttonHistorico.append(document.createTextNode('Ver Histórico'))
+  
+  divCardOptionTransf.appendChild(buttonTransferencia)
+  divCardOptionAdicionar.appendChild(buttonAdicionar)
+  divCardOptionCompras.appendChild(buttonCompras)
+  divCardOptionHistorico.appendChild(buttonHistorico)
+  
+  sectionCard.appendChild(divCardOptionTransf)
+  sectionCard.appendChild(divCardOptionAdicionar)
+  sectionCard.appendChild(divCardOptionCompras)
+  sectionCard.appendChild(divCardOptionHistorico)
+  
+  menu.appendChild(sectionCard)
+}
+
+// Cria o card com o saldo disponível para o cliente realizar as operações
+function cardSaldo(){
+  let saldo = document.querySelector('.saldo')
+  
+  let labelSaldo = document.createElement('label')
+  let titleSaldo = document.createElement('h1')
+  titleSaldo.append(document.createTextNode('Saldo'))
+  
+  let valueSaldo = document.createElement('p')
+
+  let id = 2
+  const req = axios.get(urlBase + `usuarios/${id}`)
+  
+  req.then(function(res){
+    const resultado = res.data
+    valueSaldo.append(document.createTextNode(`R$` + resultado.carteira.saldo))
+  }).catch(function(error){
+    valueSaldo.append(document.createTextNode(error.data))
+  })
+  
+  labelSaldo.appendChild(titleSaldo)
+  labelSaldo.appendChild(valueSaldo)
+  
+  saldo.appendChild(labelSaldo)
+}
 
 // Função responsável por montar o card de Transferência de saldo entre carteiras
 function cardTransfSaldo() {
@@ -63,8 +140,7 @@ function cardTransfSaldo() {
   inputValor.setAttribute("type", "number");
   inputValor.setAttribute("name", "valor");
 
-  let submit = document.createElement("input");
-  submit.setAttribute("type", "submit");
+  let submit = document.createElement("button");
   submit.appendChild(document.createTextNode("Transferir Dinheiro"));
 
   labelEnvio.appendChild(spanEnvio);
@@ -189,11 +265,12 @@ function cardFazerCompras() {
 
 // Função responsável por montar o card de Visualização do Extrato
 function cardVerHistorico() {
-  let main = document.querySelector(".main");
+  let div = document.querySelector(".history");
+  div.innerHTML = ""
+  
   let p = document.createElement('p')
   p.classList.add("srv-msg")
-  // let msg = document.querySelector(".srv-msg");
-
+  
   let table = document.createElement('table')
   let thead = document.createElement('thead')
   let tbody = document.createElement('tbody')
@@ -206,14 +283,14 @@ function cardVerHistorico() {
   thead.appendChild(thOper)
   thead.appendChild(thValor)
 
-  const conta = 1;
+  const conta = 2;
 
   const req = axios.get(urlBase + `extratos/${conta}`);
 
   req
     .then(function (res) {
       const resultado = res.data
-      p.innerHTML = ""
+      // p.innerHTML = ""
 
       for(result of resultado){
         const tr = document.createElement('tr')
@@ -233,7 +310,9 @@ function cardVerHistorico() {
       table.appendChild(tbody)
 
       p.appendChild(table)
-      return main.appendChild(p)
+      div.appendChild(p)
+
+      return main.appendChild(div)
     })
     .catch(function (error) {
       return console.log(error);
@@ -244,7 +323,7 @@ function cardVerHistorico() {
 function transferirSaldo(contaEnvio, contaDestino, valor) {
   let main = document.querySelector(".main");
   let p = document.createElement('p')
-  p.classList.add("srv-msg")
+  p.classList.add("ret-msg")
 
   const req = axios.post(urlBase + "carteiras", {
     contaEnvio,
@@ -254,9 +333,11 @@ function transferirSaldo(contaEnvio, contaDestino, valor) {
 
   req
     .then(function (res) {
-      p.append(document.createTextNode(res.data));
+      const retorno = res.data
+      console.log(retorno)
+      // p.append(document.createTextNode(res.data));
 
-      return main.appendChild(p);
+      // return main.appendChild(p);
     })
     .catch(function (error) {
       // msg.append(document.createTextNode(`Ocorreu um erro: ${error.data}`));
@@ -274,7 +355,7 @@ function adicionarSaldo(valor) {
   if (valor <= 0)
     alert(`O valor a ser depositado precisa ser maior que 0(zero).`);
 
-  const conta = 1;
+  const conta = 2;
 
   const req = axios.put(urlBase + `carteiras/${conta}`, {
     valor,
@@ -304,7 +385,9 @@ function fazerCompras(compra) {
 
   req
     .then(function (res) {
-      return alert(res.data);
+      const retorno = res.data
+      console.log(retorno)
+      // return alert(res.data);
     })
     .catch(function (error) {
       return alert(error.data);
