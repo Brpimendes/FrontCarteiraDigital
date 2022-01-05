@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button{
+    border: none;
+    cursor: pointer;
+}
+
+body{
+    /* margin: 0;
+    padding 0; */
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient( 115deg, #001669, #007296 1%, #007296 11%, #015673 15%, #000 23.57%, transparent 23.57%, transparent 100% ),
+                      linear-gradient( 109deg, transparent, #2d8427 23.57%, #205a06 41%, #000 45%, transparent 45%, transparent 100% ),
+                      linear-gradient( 109deg, transparent, #e79a07 45%, #e79a07 50%, #e79a07 52%, #444 55%, transparent 45%, transparent 100% ),
+                      linear-gradient( 109deg, transparent, #288ab1 55%, #288ab1 68%,  #000 73%, transparent 73%, transparent 100% ),
+                      linear-gradient( 109deg, transparent, #de491e 73%, #de491e 100% );
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.header{
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 70px;
+    background-color: #ee00004f;
+}
+
+.header h1{
+    font-family: -webkit-pictograph;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.main{
+    display: grid;
+    place-items: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+.main form, .main .menu{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 3px 3px 9px #666;
+    font-family: "Verdana", sans-serif;
+    background-color: #cccd;
+}
+
+.main form label{
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.main form label span{
+    display: inline-block;
+    width: 100%;
+}
+
+.main form label input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.main form button{
+    margin: 2px 0 2px 0;
+}
+
+.main .card .card-options{
+    width: 80px;
+    /* height: 80px; */
+}
+
+.main form button,
+.main .card .card-options button{
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #ee8400;
+    border-radius: 5px;
+    color: #003489;
+    transition: all .222s linear
+}
+
+.main form button:hover,
+.main .card .card-options button:hover{
+    background-color: #ee8400;
+    color: #fff;
+}
+
+.main .menu .title{
+    font-size: 22px;
+}
+
+.main .menu .card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.main .card .card-options button{
+    width: 100%;
+    padding: 10px;
+}
+
+.main .option{
+    width: 282px;
+    max-width: 282px;
+}
+
+.main .option h1{
+    font-size: 22px
+}
+
+.main .srv-msg {
+    width: 282px;
+    max-width: 282px;
+    background-color: #cccc;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px #ccc;
+  }
+  
+  .main .srv-msg table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .main .srv-msg table th{
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    color: #003489;
+  }
+  
+  .main .srv-msg table tbody tr{
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .main .srv-msg table tbody tr td{
+    padding: 5px;
+    text-align: center;
+  }
+
+.main .saldo{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 115px;
+    right: 450px;
+    padding: 5px;
+    width: 150px;
+    height: 75px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #eee9;
+    font-family: sans-serif;
+}
+
+.main .saldo label h1{
+    font-size: 20px;
+    font-weight: bold;
+    color: #003489;
+}
